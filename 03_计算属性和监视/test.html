@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="ty">
+    姓: <input type="text" placeholder="First Name" v-model="firstName"><br>
+    名: <input type="text" placeholder="Last Name" v-model="lastNAme"><br>
+    姓名1（单向）: <input type="text" placeholder="Full Name" v-model="fullName1"><br>
+    姓名2（单向）: <input type="text" placeholder="Full Name" v-model="fullName2"><br>
+    姓名3（双向）: <input type="text" placeholder="Full Name" v-model="fullName3"><br>
+
+
+    <p>{{fullName1}}</p>
+    <p>{{fullName1}}</p>
+    <p>{{fullName1}}</p>
+    <p>{{fullName1}}</p>
+
+</div>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#ty',
+        data: {
+            firstName: 'A',
+            lastNAme: 'B',
+            //fullNAme: 'A B',
+            fullNAme2: 'A B',
+        },
+        computed: {
+            fullName1(){
+                console.log(this)
+                return this.firstName + ' ' + this.lastNAme
+            },
+
+            fullName3: {
+                get(){
+                    return this.firstName + ' ' + this.lastNAme
+                },
+
+                set(value){
+                    const names = value.split(' ')
+                    this.firstName = names[0]
+                    this.lastNAme = names[1]
+                }
+            }
+        },
+
+        watch: { //配置监视
+            firstName: function (value) {
+                this.fullName2 = value + ' ' + this.lastNAme
+            }
+        }
+    })
+
+    vm.$watch('lastName', function (value) {
+        console.log(value)
+        this.fullName2 = this.firstName + ' ' + value
+    })
+</script>
+</body>
+</html>
