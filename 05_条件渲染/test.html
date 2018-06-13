@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+ v-if
+
+ v-show  频繁切换的时候 使用v-show比较好
+
+
+ v-if 隐藏时会移除对象
+ v-show 隐藏时 不会移除对象
+
+
+-->
+
+    <div id="demo">
+       <p v-if="ok">成功了</p>
+       <p v-else>失败了</p>
+
+
+        <p v-show="ok">美剧</p>
+        <p v-show="!ok">日剧</p>
+
+        <button @click="ok=!ok">切换</button>
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        //创建实例
+        const vm = new Vue({
+            el : '#demo',
+            data: {
+                ok: false
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>
