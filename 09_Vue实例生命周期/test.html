@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="test">
+    <!--<button @click="destroyVM">destroy vm</button>-->
+
+    <p v-show="ok">hello world</p>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    //创建实例
+    const vm = new Vue({
+        el: '#test',
+        data: {
+            ok: true
+        },
+
+        //初始化显示之后立即调用
+
+
+
+
+        /* beforeDestroy(){
+             //清除定时器
+             clearInterval(this.intervalId)
+         },*/
+
+        /* method:{
+             destroyVM(){
+                 //干掉vue
+                 this.$destroy()
+             }
+         }
+ */
+    })
+    setInterval(function () {
+        vm.ok = !vm.ok
+    }, 1000)
+
+
+</script>
+</body>
+</html>

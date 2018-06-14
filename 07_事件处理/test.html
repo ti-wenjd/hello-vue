@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="demo">
+        <h2>1.绑定监听</h2>
+        <button @click="test">test</button>
+        <button @click="test1('zhangsan')">test1</button>
+
+        <h2>2.事件修饰符</h2>
+        <div style="width: 200px;height: 200px;background: red" @click="test3">
+            <div style="width: 100px;height: 100px;background: blue" @click.stop="test4"></div>
+        </div>
+
+        <a href="http://www.baidu.com" @click.prevent="test5">去百度</a>
+
+
+        <h2>3.按键修饰符</h2>
+        <!--<input type="text" @keyup.13="test6">-->
+        <input type="text" @keyup.enter="test6">
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        //创建实例
+        const vm = new Vue({
+            el : '#demo',
+            data: {
+                test(){
+                    alert('test')
+                },
+
+                test1(msg){
+                    alert(event.target.innerHTML)
+                    alert(msg)
+                },
+
+                //冒泡
+                test3(){
+                    alert('out')
+                },
+
+                test4(){
+                    alert('in')
+                },
+
+                test5(){
+                    alert('去百度')
+                },
+
+                test6(event){
+                    alert(event.target.value+''+event.keyCode)
+                },
+            }
+
+        })
+
+
+
+    </script>
+</body>
+</html>
