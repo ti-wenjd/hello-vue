@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .xxx-enter-active,.xxx-leave-active{
+            transition: opacity 1s;
+        }
+
+        .xxx-enter,.xxx-leave-to{
+            opacity: 0;
+        }
+
+        /*显示的过滤效果*/
+        .move-enter-active{
+            transition: all 1s
+        }
+
+        /*隐藏时的过滤效果*/
+        .move-leave-active{
+            transition: all 1s
+        }
+
+        /*隐藏时的样式*/
+        .move-enter,.move-leave-to{
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="test">
+        <button @click="ok=!ok">toggle</button>
+        <transition name="xxx">
+            <p v-show="ok" >hello</p>
+        </transition>
+
+    </div>
+
+    <br/><br/>
+
+    <div id="test1">
+        <button @click="ok=!ok">toggle</button>
+        <transition name="move">
+            <p v-show="ok" >hello</p>
+        </transition>
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        //创建实例
+        const vm = new Vue({
+            el : '#test',
+            data(){
+                return {
+                    ok: true
+                }
+            }
+
+        })
+
+        //创建实例
+        const vm1 = new Vue({
+            el : '#test1',
+            data(){
+                return {
+                    ok: true
+                }
+            }
+
+        })
+
+
+    </script>
+</body>
+</html>
