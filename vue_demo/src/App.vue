@@ -1,64 +1,54 @@
 <template>
-  <div>
-    <header class="site-header jumbotron">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <h1>请发表对Vue的评论</h1>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="container">
-      <Add :addComment="addComment"/>
-      <List :comments="comments" :deleteComment="deleteComment"/>
+  <div class="todo-container">
+    <div class="todo-wrap">
+      <todo-header :addTodo="addTodo"/>
+      <to-list :todos="todos" :deleteTodo="deleteTodo"/>
+      <todo-foot/>
     </div>
   </div>
 </template>
 
 <script>
 
-  import Add from './components/Add'
-  import List from './components/List'
+  import TodoHeader from './components/TodoHeader'
+  import ToList from './components/ToList'
+  import TodoFoot from './components/TodoFoot'
 
   export default {
-    data() {
+    data(){
       return {
-        comments: [
-          {
-            name: 'Bod',
-            content: 'Vye good'
-          },
-          {
-            name: 'Ccc',
-            content: 'Vye good222'
-          },
-          {
-            name: 'TRX',
-            content: 'Vye good333'
-          }
+        todos:[
+          {title:'吃放',complete:false},
+          {title:'睡觉',complete:true},
+          {title:'coding',complete:false}
         ]
       }
     },
+
     methods:{
-      //添加评论
-      addComment(comment){
-        this.comments.unshift(comment)
+      addTodo(todo){
+        this.todos.unshift(todo)
       },
 
-      //删除指定下标的评论
-      deleteComment(index){
-        this.comments.splice(index,1)
+      deleteTodo(index){
+        this.todos.splice(index,1)
       }
-
     },
-    name: "app",
+
     components: {
-      Add, List
+      TodoHeader, ToList,TodoFoot
     }
   }
 </script>
 
 <style scoped>
-
+  .todo-container {
+    width: 600px;
+    margin: 0 auto;
+  }
+  .todo-container .todo-wrap {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
 </style>
