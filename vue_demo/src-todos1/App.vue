@@ -1,16 +1,15 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <!--<todo-header @addTodo="addTodo"/>--><!--绑定事件-->
-      <todo-header ref="header" /><!--绑定事件-->
-      <to-list :todos="todos" />
+      <todo-header :addTodo="addTodo"/>
+      <to-list :todos="todos" :deleteTodo="deleteTodo"/>
       <todo-foot :todos="todos" :deleteCompleteTodos="deleteCompleteTodos" :selectAllTodos="selectAllTodos"/>
     </div>
   </div>
 </template>
 
 <script>
-  import PubSub from 'pubsub-js'
+
   import TodoHeader from './components/TodoHeader'
   import ToList from './components/ToList'
   import TodoFoot from './components/TodoFoot'
@@ -27,15 +26,6 @@
         todos: JSON.parse(window.localStorage.getItem('todos_key') || '[]')
 
       }
-    },
-
-    mounted(){
-      //this.$on('addTodo',this.addTodo)
-      this.$refs.header.$on('addTodo',this.addTodo),
-      //订阅消息
-      PubSub.subscribe('deleteTodo',(msg,index) => {
-          this.deleteTodo(index)
-      })
     },
 
     methods:{
