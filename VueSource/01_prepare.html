@@ -29,6 +29,28 @@
   const lis = document.getElementsByTagName("li")
   console.log(lis instanceof Array,lis[1].innerHTML)
 
+  console.log(lis.toString(),lis.hasOwnProperty("fullName"),lis.hasOwnProperty("toString"))
+
+
+  let ul = document.getElementById("fragment_test");
+
+  let fragment = document.createDocumentFragment();
+
+  let child
+  while (child=ul.firstChild){
+      fragment.appendChild(child)
+  }
+
+  Array.prototype.slice.call(fragment.childNodes).forEach(node => {
+      if(node.nodeType===1){
+          node.textContent = 'hello kikro'
+      }
+  })
+
+
+  ul.appendChild(fragment)
+
+
 </script>
 </body>
 </html>
