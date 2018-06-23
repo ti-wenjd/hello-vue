@@ -25,7 +25,7 @@
             firstView: true,
             loading: false,
             users:null,
-            errorMsg:''
+            errorMsgc:''
           }
         },
       mounted(){
